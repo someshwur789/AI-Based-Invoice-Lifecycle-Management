@@ -1,0 +1,151 @@
+import { Invoice, DashboardMetrics } from '@/types/invoice';
+
+export const mockInvoices: Invoice[] = [
+  {
+    id: '1',
+    invoiceNumber: 'INV-2024-001',
+    clientName: 'Acme Corporation',
+    clientEmail: 'billing@acme.com',
+    amount: 15750.00,
+    currency: 'INR',
+    status: 'paid',
+    issueDate: '2024-11-01',
+    dueDate: '2024-11-30',
+    items: [
+      { id: '1', description: 'Web Development Services', quantity: 50, unitPrice: 150, total: 7500 },
+      { id: '2', description: 'UI/UX Design', quantity: 30, unitPrice: 175, total: 5250 },
+      { id: '3', description: 'Project Management', quantity: 20, unitPrice: 150, total: 3000 },
+    ],
+    notes: 'Thank you for your business!',
+  },
+  {
+    id: '2',
+    invoiceNumber: 'INV-2024-002',
+    clientName: 'TechStart Inc.',
+    clientEmail: 'finance@techstart.io',
+    amount: 8500.00,
+    currency: 'INR',
+    status: 'pending',
+    issueDate: '2024-11-15',
+    dueDate: '2024-12-15',
+    items: [
+      { id: '1', description: 'Mobile App Development', quantity: 40, unitPrice: 175, total: 7000 },
+      { id: '2', description: 'QA Testing', quantity: 15, unitPrice: 100, total: 1500 },
+    ],
+  },
+  {
+    id: '3',
+    invoiceNumber: 'INV-2024-003',
+    clientName: 'Global Dynamics',
+    clientEmail: 'ap@globaldynamics.com',
+    amount: 23400.00,
+    currency: 'INR',
+    status: 'overdue',
+    issueDate: '2024-10-01',
+    dueDate: '2024-10-31',
+    items: [
+      { id: '1', description: 'Enterprise Software License', quantity: 1, unitPrice: 15000, total: 15000 },
+      { id: '2', description: 'Implementation Services', quantity: 28, unitPrice: 200, total: 5600 },
+      { id: '3', description: 'Training Sessions', quantity: 14, unitPrice: 200, total: 2800 },
+    ],
+  },
+  {
+    id: '4',
+    invoiceNumber: 'INV-2024-004',
+    clientName: 'Bright Solutions',
+    clientEmail: 'billing@brightsolutions.net',
+    amount: 4200.00,
+    currency: 'INR',
+    status: 'paid',
+    issueDate: '2024-11-10',
+    dueDate: '2024-12-10',
+    items: [
+      { id: '1', description: 'Consulting Services', quantity: 21, unitPrice: 200, total: 4200 },
+    ],
+  },
+  {
+    id: '5',
+    invoiceNumber: 'INV-2024-005',
+    clientName: 'Nova Enterprises',
+    clientEmail: 'accounts@nova-ent.com',
+    amount: 12800.00,
+    currency: 'INR',
+    status: 'pending',
+    issueDate: '2024-11-20',
+    dueDate: '2024-12-20',
+    items: [
+      { id: '1', description: 'Cloud Infrastructure Setup', quantity: 1, unitPrice: 5000, total: 5000 },
+      { id: '2', description: 'DevOps Services', quantity: 26, unitPrice: 200, total: 5200 },
+      { id: '3', description: 'Security Audit', quantity: 1, unitPrice: 2600, total: 2600 },
+    ],
+  },
+  {
+    id: '6',
+    invoiceNumber: 'INV-2024-006',
+    clientName: 'Summit Holdings',
+    clientEmail: 'finance@summitholdings.com',
+    amount: 6750.00,
+    currency: 'INR',
+    status: 'draft',
+    issueDate: '2024-12-01',
+    dueDate: '2024-12-31',
+    items: [
+      { id: '1', description: 'API Integration', quantity: 25, unitPrice: 180, total: 4500 },
+      { id: '2', description: 'Documentation', quantity: 15, unitPrice: 150, total: 2250 },
+    ],
+  },
+  {
+    id: '7',
+    invoiceNumber: 'INV-2024-007',
+    clientName: 'Pinnacle Corp',
+    clientEmail: 'billing@pinnaclecorp.io',
+    amount: 18900.00,
+    currency: 'INR',
+    status: 'paid',
+    issueDate: '2024-10-15',
+    dueDate: '2024-11-15',
+    items: [
+      { id: '1', description: 'Full Stack Development', quantity: 90, unitPrice: 175, total: 15750 },
+      { id: '2', description: 'Database Optimization', quantity: 15, unitPrice: 210, total: 3150 },
+    ],
+  },
+  {
+    id: '8',
+    invoiceNumber: 'INV-2024-008',
+    clientName: 'Horizon Labs',
+    clientEmail: 'ap@horizonlabs.tech',
+    amount: 9200.00,
+    currency: 'INR',
+    status: 'overdue',
+    issueDate: '2024-09-20',
+    dueDate: '2024-10-20',
+    items: [
+      { id: '1', description: 'Machine Learning Model Development', quantity: 40, unitPrice: 230, total: 9200 },
+    ],
+  },
+];
+
+export const dashboardMetrics: DashboardMetrics = {
+  totalRevenue: mockInvoices.filter(i => i.status === 'paid').reduce((sum, i) => sum + i.amount, 0),
+  totalInvoices: mockInvoices.length,
+  pendingAmount: mockInvoices.filter(i => i.status === 'pending').reduce((sum, i) => sum + i.amount, 0),
+  overdueAmount: mockInvoices.filter(i => i.status === 'overdue').reduce((sum, i) => sum + i.amount, 0),
+  paidThisMonth: mockInvoices.filter(i => i.status === 'paid' && i.issueDate.startsWith('2024-11')).reduce((sum, i) => sum + i.amount, 0),
+  invoicesThisMonth: mockInvoices.filter(i => i.issueDate.startsWith('2024-11') || i.issueDate.startsWith('2024-12')).length,
+};
+
+export const monthlyRevenueData = [
+  { name: 'Jul', value: 32000 },
+  { name: 'Aug', value: 45000 },
+  { name: 'Sep', value: 38000 },
+  { name: 'Oct', value: 52000 },
+  { name: 'Nov', value: 48000 },
+  { name: 'Dec', value: 28000 },
+];
+
+export const statusDistribution = [
+  { name: 'Paid', value: mockInvoices.filter(i => i.status === 'paid').length, color: 'hsl(152, 69%, 40%)' },
+  { name: 'Pending', value: mockInvoices.filter(i => i.status === 'pending').length, color: 'hsl(38, 92%, 50%)' },
+  { name: 'Overdue', value: mockInvoices.filter(i => i.status === 'overdue').length, color: 'hsl(0, 72%, 51%)' },
+  { name: 'Draft', value: mockInvoices.filter(i => i.status === 'draft').length, color: 'hsl(210, 10%, 45%)' },
+];
