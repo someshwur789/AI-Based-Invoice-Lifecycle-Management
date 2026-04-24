@@ -31,14 +31,14 @@ The AI-Based Invoice Lifecycle Management System is an intelligent solution desi
 
 <h3 style="font-size:20px;">🛠️ Technologies Used</h3>
 
-- Programming: Python
-- AI/ML: TensorFlow / Scikit-learn
-- OCR: Tesseract / EasyOCR
+- Programming: Python Logics
+- AI/ML: TensorFlow & Scikit-learn
+- OCR: Tesseract, EasyOCR, VLM (Vision Language Model), GeminiFlash 1.15
 - Data Handling: Pandas, NumPy
 - Visualization: Matplotlib, Seaborn
-- Frontend: ReactJS (if applicable)
-- Backend: Flask / Node.js
-- Database: MongoDB / Firebase
+- Frontend: ReactJS
+- Backend: Flask, Node.js
+- Database: Supabase
 
 <h3 style="font-size:20px;">⚙️ Installation & Setup</h3>
 
